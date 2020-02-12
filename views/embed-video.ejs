@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Video streaming</title>
+	<style type="text/css">
+		body {
+			width: 100vw;
+			height: 100vh;
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script src="../NodePlayer.js"></script>
+	<script type="text/javascript">
+		function play(channel) {
+			var url = 'ws://demo-livestream.gigasource.io:8000/live/'+channel+'.flv';
+			console.log(url);
+	        var player = new Module.NodePlayer();
+	        player.on('start', () => {
+		      console.log('NodePlayer on start');
+		    });
+		    player.on('close', () => {
+		      console.log('NodePlayer on close');
+		    });
+		    player.on('error', (err) => {
+		      console.log('NodePlayer on error: ' + err);
+		    });
+		    player.setPlayView('video1');
+    		player.setScaleMode(1);
+    		player.enableVideo(true);
+    		player.enableAudio(false);
+	        player.start(url);
+	     //    flvPlayer.play().catch(e => {
+	     //    	flvPlayer.pause();
+	     //    	setTimeout(() => play(channel), 5000);
+	    	// });
+	     //    flvPlayer.on(flvjs.Events.ERROR, () => {
+	     //    	flvPlayer.pause();
+	     //    	setTimeout(() => play(channel), 5000);
+	     //    });
+	    }
+
+	    window.onload = function() {
+	    	play('<%= channel %>');
+	    }
+	</script>
+</head>
+	<body>
+		<canvas id="video1" style="width:100%;height:100%;" width="1080" height="1920"></canvas>
+	</body>
+</html>

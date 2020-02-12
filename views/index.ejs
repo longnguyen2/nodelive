@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="UTF-8">
+        <title>Video streaming</title>
+        <style type="text/css">
+                #container {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: space-around;
+                }
+                .link {
+                        display: flex;
+                        margin-bottom: 50px;
+                }
+                .text {
+                        width: 100%;
+                        flex-grow: 1;
+                }
+                .frame {
+                	flex-shrink: 1;
+                	flex-basis: 33%;
+                }
+        </style>
+</head>
+        <body>
+                <div id="container">
+                        <div class="frame">
+                                <iframe class="frame" src="http://demo-livestream.gigasource.io/embed/channel1" width="300" height="533"></iframe>
+                                <div style="text-align: center; width: 100%">Channel 1</div>
+                                <div class="link">
+                                        <input class="text" id="input1" type="text" value='<iframe class="frame" src="http://demo-livestream.gigasource.io/embed/channel1" width="300" height="533"></iframe>' readonly="readonly">
+                                        <button onclick="copyToClipboard('input1')">Copy</button>
+                                </div>
+                        </div>
+                        <div class="frame">
+                                <iframe class="frame" src="http://demo-livestream.gigasource.io/embed/channel2" width="300" height="533"></iframe>
+                                <div style="text-align: center; width: 100%">Channel 2</div>
+                                <div class="link">
+                                        <input class="text" id="input2" type="text" value='<iframe class="frame" src="http://demo-livestream.gigasource.io/embed/channel2" width="300" height="533"></iframe>' readonly="readonly">
+                                        <button onclick="copyToClipboard('input2')">Copy</button>
+                                </div>
+                        </div>
+                        <div class="frame">
+                                <iframe class="frame" src="http://demo-livestream.gigasource.io/embed/channel3" width="300" height="533"></iframe>
+                                <div style="text-align: center; width: 100%">Channel 3</div>
+                                <div class="link">
+                                        <input class="text" id="input3" type="text" value='<iframe class="frame" src="http://demo-livestream.gigasource.io/embed/channel3" width="300" height="533"></iframe>' readonly="readonly">
+                                        <button onclick="copyToClipboard('input3')">Copy</button>
+                                </div>
+                        </div>
+                </div>
+        </body>
+        <script type="text/javascript">
+                function copyToClipboard(inputId) {
+                        var target = document.getElementById(inputId);
+                        target.select();
+                        target.setSelectionRange(0, 99999);
+                        document.execCommand("copy");
+                        alert("Copied");
+                }
+        </script>
+</html>
