@@ -14,7 +14,7 @@
 	<script src="../NodePlayer.js"></script>
 	<script type="text/javascript">
 		function play(channel) {
-			var url = 'ws://demo-livestream.gigasource.io:8000/live/'+channel+'.flv';
+			var url = 'wss://demo-livestream.gigasource.io:8443/live/'+channel+'.flv';
 			console.log(url);
 	        var player = new Module.NodePlayer();
 	        player.on('start', () => {
